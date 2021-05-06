@@ -4,16 +4,16 @@ import (
 	"fmt"
 
 	goovn "github.com/ebay/go-ovn"
+	"github.com/ebay/libovsdb"
 )
 
-// TODO: implement mock methods as we keep adding unit-tests
-// Get logical switch by name
-func (mock *MockOVNClient) LSGet(ls string) ([]*goovn.LogicalSwitch, error) {
+// Add ACL to entity (PORT_GROUP or LOGICAL_SWITCH)
+func (mock *MockOVNClient) ACLAddEntity(entityType goovn.EntityType, entityName, aclName, direct, match, action string, priority int, external_ids map[string]string, logflag bool, meter, severity string) (*goovn.OvnCommand, error) {
 	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
 }
 
-// Create ls named SWITCH
-func (mock *MockOVNClient) LSAdd(ls string) (*goovn.OvnCommand, error) {
+// Delete acl from entity (PORT_GROUP or LOGICAL_SWITCH)
+func (mock *MockOVNClient) ACLDelEntity(entityType goovn.EntityType, entityName, aclUUID string) (*goovn.OvnCommand, error) {
 	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
 }
 
@@ -64,6 +64,18 @@ func (mock *MockOVNClient) ACLAdd(ls, direct, match, action string, priority int
 
 // Delete acl
 func (mock *MockOVNClient) ACLDel(ls, direct, match string, priority int, external_ids map[string]string) (*goovn.OvnCommand, error) {
+	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
+}
+
+func (mock *MockOVNClient) ACLSetLogging(aclUUID string, newLogflag bool, newMeter, newSeverity string) (*goovn.OvnCommand, error) {
+	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
+}
+
+func (mock *MockOVNClient) ACLSetMatch(aclUUID, newMatch string) (*goovn.OvnCommand, error) {
+	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
+}
+
+func (mock *MockOVNClient) ACLSetName(aclUUID, aclName string) (*goovn.OvnCommand, error) {
 	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
 }
 
@@ -242,6 +254,29 @@ func (mock *MockOVNClient) LRNATList(lr string) ([]*goovn.NAT, error) {
 	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
 }
 
+func (mock *MockOVNClient) LRPolicyAdd(lr string, priority int, match string, action string, nexthop *string, nexthops []string, options map[string]string, external_ids map[string]string) (*goovn.OvnCommand, error) {
+	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
+}
+
+func (mock *MockOVNClient) LRPolicyDel(lr string, priority int, match *string) (*goovn.OvnCommand, error) {
+	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
+}
+
+// Delete a LR policy by UUID
+func (mock *MockOVNClient) LRPolicyDelByUUID(lr string, uuid string) (*goovn.OvnCommand, error) {
+	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
+}
+
+// Delete all LRPolicies
+func (mock *MockOVNClient) LRPolicyDelAll(lr string) (*goovn.OvnCommand, error) {
+	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
+}
+
+// Get all LRPolicies by LR
+func (mock *MockOVNClient) LRPolicyList(lr string) ([]*goovn.LogicalRouterPolicy, error) {
+	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
+}
+
 // Add Meter with a Meter Band
 func (mock *MockOVNClient) MeterAdd(name, action string, rate int, unit string, external_ids map[string]string, burst int) (*goovn.OvnCommand, error) {
 	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
@@ -291,4 +326,22 @@ func (mock *MockOVNClient) SBGlobalSetOptions(options map[string]string) (*goovn
 // Get SB_Global table options
 func (mock *MockOVNClient) SBGlobalGetOptions() (map[string]string, error) {
 	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
+}
+
+func (mock *MockOVNClient) AuxKeyValDel(table string, rowName string, auxCol string, kv map[string]*string) (*goovn.OvnCommand, error) {
+	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
+}
+
+func (mock *MockOVNClient) AuxKeyValSet(table string, rowName string, auxCol string, kv map[string]string) (*goovn.OvnCommand, error) {
+	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
+}
+
+func (mock *MockOVNClient) ExecuteR(cmds ...*goovn.OvnCommand) ([]string, error) {
+	return nil, fmt.Errorf("method %s is not implemented yet", functionName())
+}
+
+// Get ovn-db schema
+func (mock *MockOVNClient) GetSchema() libovsdb.DatabaseSchema {
+	var dbSchema libovsdb.DatabaseSchema
+	return dbSchema
 }
