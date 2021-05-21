@@ -119,6 +119,7 @@ func (n *NodeController) AddPod(pod *kapi.Pod) error {
 	// It's always safe to ignore the learn flow as we only process and add or update
 	// if the IP/MAC or Annotations have changed
 	ignoreLearn := false
+	klog.Warning("Forcing ignoreLearn to false")
 
 	if !n.initialized {
 		node, err := n.nodeLister.Get(n.nodeName)
